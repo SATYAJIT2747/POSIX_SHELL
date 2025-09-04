@@ -1,0 +1,79 @@
+#######################################################
+#   POSIX Shell – Full Test Script
+#   Run these step by step inside ./my_shell
+#######################################################
+
+
+==================== 1. BASIC SETUP & BUILT-INS ====================
+
+mkdir final_test_dir
+cd final_test_dir
+
+echo "Apple is a fruit" > file1.txt
+echo "Banana is also a fruit" > file2.txt
+echo "This is another_file.log" > another_file.log
+touch .hidden_file
+
+pwd
+echo This is a test of the echo command
+
+cd ..
+cd -
+
+
+==================== 2. CUSTOM LS COMMAND ====================
+
+ls
+ls -a
+ls -l
+ls -l file1.txt
+ls non_existent_file
+
+
+==================== 3. PINFO & SEARCH ====================
+
+pinfo
+search file1.txt
+search no_such_file.txt
+
+
+==================== 4. I/O REDIRECTION ====================
+
+history > history_output.txt
+pwd >> history_output.txt
+sort < file1.txt
+
+
+==================== 5. PIPING ====================
+
+history | grep cd
+ls -a | sort | wc -l
+
+
+==================== 6. COMBINED PIPES + REDIRECTION ====================
+
+ls -l | grep "file" > files_with_file.txt
+cat files_with_file.txt
+
+
+==================== 7. FOREGROUND / BACKGROUND & SIGNALS ====================
+
+sleep 20 &              # runs in background
+sleep 100               # press Ctrl+C while running
+sleep 100               # press Ctrl+Z while running
+
+
+==================== 8. INTERACTIVE FEATURES ====================
+
+# Do these manually inside your shell:
+# - Press UP / DOWN arrows → navigate command history
+# - Type: ec + TAB         → should autocomplete to "echo"
+# - Type: ls final + TAB   → should autocomplete to "ls final_test_dir/"
+
+
+==================== 9. CLEANUP ====================
+
+cd ..
+rm -rf final_test_dir history_output.txt files_with_file.txt
+exit
+
